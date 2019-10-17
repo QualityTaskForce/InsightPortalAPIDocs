@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: InsightPortal - Articles
+  version: '1.0'
+servers:
+  - url: 'https://api.insightportal.io'
+paths:
+  '/article/get-article/{sef-url}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                  title:
+                    type: string
+                  summaryText:
+                    type: string
+                  editorName:
+                    type: string
+                  editorSurname:
+                    type: string
+                  dateOfPublished:
+                    type: string
+                  readTime:
+                    type: integer
+                  impactRating:
+                    type: integer
+                  articleUpdates:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        updateAt:
+                          type: string
+                        content:
+                          type: string
+                        readTime:
+                          type: integer
+                  testRecommendation:
+                    type: string
+                  fullText:
+                    type: string
+                  richardId:
+                    type: string
+                  richcardType:
+                    type: string
+                  category:
+                    type: string
+                  subcategory:
+                    type: string
+      description: Retrieves a specific article
+    parameters:
+      - schema:
+          type: string
+        name: sef-url
+        in: path
+        required: true
+        description: sef-url for the article
+components:
+  schemas: {}

@@ -1,0 +1,621 @@
+openapi: 3.0.0
+info:
+  title: InsightPortal - TestAdvisor
+  version: '1.0'
+  contact:
+    url: www.qualitytaskforce.com
+  description: API for InsightPortal
+servers:
+  - url: 'https://api.insightportal.io'
+    description: InsightPortal API
+paths:
+  /testadvisor/countries:
+    get:
+      summary: Get countries
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                    name:
+                      type: string
+                    region_code:
+                      type: string
+              examples:
+                Country List:
+                  value:
+                    - code: AU
+                      name: Australia
+                      region_code: OC
+                    - code: AT
+                      name: Austria
+                      region_code: EU
+                    - code: BH
+                      name: Bahrain
+                      region_code: AS
+      description: Retreive a list of supported countries. Alphabetically ordered.
+  /testadvisor/regions:
+    get:
+      summary: Get regions
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                Region List:
+                  value:
+                    - AS
+                    - EU
+                    - NA
+                    - OC
+                    - WWW
+      description: 'Retrieves a list of supported regions. "WWW" is a special region containing all available regions and countries.'
+  '/testadvisor/countriesbyregion/{region}':
+    parameters:
+      - type: string
+        name: region
+        in: path
+        schema:
+          type: string
+        description: The code of the region to search
+        required: true
+    get:
+      summary: Get countries by region
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                    name:
+                      type: string
+                    region_code:
+                      type: string
+              examples:
+                CountriesByRegion:
+                  value:
+                    - code: AT
+                      name: Austria
+                      region_code: EU
+                    - code: BE
+                      name: Belgium
+                      region_code: EU
+                    - code: BG
+                      name: Bulgaria
+                      region_code: EU
+      description: Retrieves a list of countries for a specific region
+  '/testadvisor/browsers/{code}':
+    parameters:
+      - type: string
+        name: code
+        in: path
+        required: true
+        description: Code of the target country
+        schema:
+          type: string
+    get:
+      summary: Get browser market shares
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    browserName:
+                      type: string
+                    marketPen:
+                      type: string
+              examples:
+                Browsers GB:
+                  value:
+                    - browserName: Chrome
+                      marketPen: 57.74
+                    - browserName: Safari
+                      marketPen: 21.69
+                    - browserName: Edge
+                      marketPen: 8.21
+                    - browserName: Firefox
+                      marketPen: 6.39
+                    - browserName: IE
+                      marketPen: 4.83
+                    - browserName: Opera
+                      marketPen: 0.85
+                    - browserName: Mozilla
+                      marketPen: 0.16
+                    - browserName: Pale Moon
+                      marketPen: 0.11
+      description: Retrieves browser market data for a single country for the current month. Ordered by market penetration in descending order.
+      security:
+        - BASIC_AUTH: []
+  /testadvisor/browsers:
+    post:
+      summary: Get browser market shares
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        browserName:
+                          type: string
+                        marketPen:
+                          type: number
+                  - type: object
+                    properties:
+                      inCoverage:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            browserName:
+                              type: string
+                            marketPen:
+                              type: number
+                      outOfCoverage:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            browserName:
+                              type: string
+                            marketPen:
+                              type: number
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+            multipart/form-data:
+              schema:
+                type: object
+                properties: {}
+      description: Retrieves browser market data. Allows for various configurations.
+      security:
+        - BASIC_AUTH: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                country_codes:
+                  type: array
+                  items:
+                    type: string
+                regions:
+                  type: array
+                  items:
+                    type: string
+                date:
+                  type: string
+                coverage:
+                  type: number
+                hide_out_of_coverage:
+                  type: boolean
+                threshold:
+                  type: number
+              required:
+                - country_codes
+                - regions
+                - date
+            examples:
+              EU + USA:
+                value:
+                  country_codes:
+                    - USA
+                  regions:
+                    - EU
+                  date: '2019-09-01'
+              'GB, CH, DE, and North America split coverage':
+                value:
+                  country_codes:
+                    - GB
+                    - CH
+                    - DE
+                  regions:
+                    - NA
+                  date: '2019-09-01'
+                  coverage: 40
+                  threshold: 0.1
+              'GB, CH, DE, and North America hidden coverage':
+                value:
+                  country_codes:
+                    - GB
+                    - CH
+                    - DE
+                  regions:
+                    - NA
+                  date: '2019-09-01'
+                  coverage: 40
+                  hide_out_of_coverage: true
+                  threshold: 0.1
+        description: "Required Options:\n\n• `country_codes` - An Array of country codes.\\*\n\n• `regions` - An array of region codes.\\*\n\n• `date` - `YYYY-mm-DD`\n\n\\* At least one of `country_codes` and `regions` must be supplied. They can be used independently or together.\n\nOptional:\n\n• `coverage` - Splits the data returned into 2 arrays. `inCoverage` and `outOfCoverage`. A value of `40` would return the largest marketshares, summing to 40% in the `inCoverage` list and the rest would be contained in the `outOfCoverage` list.\n\n• `hide_out_of_coverage` - Used together with the `coverage` option, will hide the `outOfCoverage` list, returning only the `inCoverage` data.\n\n• `threshold` - A limit to cut off the data returned. A value of `0.5` will discard any marketshare data below 0.5"
+  '/testadvisor/desktopbrowsers/{code}':
+    parameters:
+      - type: string
+        name: code
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Code of the target country
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    osName:
+                      type: string
+                    osVersion:
+                      type: string
+                    browserName:
+                      type: string
+                    browserVersion:
+                      type: string
+                    marketPen:
+                      type: number
+      description: Retrieves desktop browser and operating system market data for a single country for the current month. Ordered by market penetration in descending order.
+  /testadvisor/desktopbrowsers/:
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        osName:
+                          type: string
+                        osVersion:
+                          type: string
+                        browserName:
+                          type: string
+                        browserVersion:
+                          type: string
+                        marketPen:
+                          type: number
+                  - type: object
+                    properties:
+                      inCoverage:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            osName:
+                              type: string
+                            osVersion:
+                              type: string
+                            browserName:
+                              type: string
+                            browserVersion:
+                              type: string
+                            marketPen:
+                              type: number
+                      outOfCoverage:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            osName:
+                              type: string
+                            osVersion:
+                              type: string
+                            browserName:
+                              type: string
+                            browserVersion:
+                              type: string
+                            marketPen:
+                              type: number
+      description: Retrieves desktop browser and operating system market data. Allows for various configurations.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                country_codes:
+                  type: array
+                  items:
+                    type: string
+                regions:
+                  type: array
+                  items:
+                    type: string
+                date:
+                  type: string
+                coverage:
+                  type: number
+                hide_out_of_coverage:
+                  type: boolean
+                threshold:
+                  type: number
+        description: "Required Options:\n\n• `country_codes` - An Array of country codes.\\*\n\n• `regions` - An array of region codes.\\*\n\n• `date` - `YYYY-mm-DD`\n\n\\* At least one of `country_codes` and `regions` must be supplied. They can be used independently or together.\n\nOptional:\n\n• `coverage` - Splits the data returned into 2 arrays. `inCoverage` and `outOfCoverage`. A value of `40` would return the largest marketshares, summing to 40% in the `inCoverage` list and the rest would be contained in the `outOfCoverage` list.\n\n• `hide_out_of_coverage` - Used together with the `coverage` option, will hide the `outOfCoverage` list, returning only the `inCoverage` data.\n\n• `threshold` - A limit to cut off the data returned. A value of `0.5` will discard any marketshare data below 0.5"
+  '/testadvisor/mobiledevices/{code}':
+    parameters:
+      - type: string
+        name: code
+        in: path
+        required: true
+        description: Code of the target country
+        schema:
+          type: string
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    brand:
+                      type: string
+                    model:
+                      type: string
+                    type:
+                      type: string
+                    osName:
+                      type: string
+                    osVersion:
+                      type: string
+                    marketPen:
+                      type: number
+      description: Retrieves mobile device market data for the current month in the selected country. Ordered by market share
+  /testadvisor/mobiledevices/:
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        brand:
+                          type: string
+                        model:
+                          type: string
+                        type:
+                          type: string
+                        osName:
+                          type: string
+                        osVersion:
+                          type: string
+                        marketPen:
+                          type: number
+                  - type: object
+                    properties:
+                      inCoverage:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            brand:
+                              type: string
+                            model:
+                              type: string
+                            type:
+                              type: string
+                            osName:
+                              type: string
+                            osVersion:
+                              type: string
+                            marketPen:
+                              type: number
+                      outOfCoverage:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            brand:
+                              type: string
+                            model:
+                              type: string
+                            type:
+                              type: string
+                            osName:
+                              type: string
+                            osVersion:
+                              type: string
+                            marketPen:
+                              type: number
+      description: Retrieves mobile device market data. Allows for various configurations.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                '':
+                  type: number
+        description: "Required Options:\n\n• `country_codes` - An Array of country codes.\\*\n\n• `regions` - An array of region codes.\\*\n\n• `date` - `YYYY-mm-DD`\n\n\\* At least one of `country_codes` and `regions` must be supplied. They can be used independently or together.\n\nOptional:\n\n• `coverage` - Splits the data returned into 2 arrays. `inCoverage` and `outOfCoverage`. A value of `40` would return the largest marketshares, summing to 40% in the `inCoverage` list and the rest would be contained in the `outOfCoverage` list.\n\n• `hide_out_of_coverage` - Used together with the `coverage` option, will hide the `outOfCoverage` list, returning only the `inCoverage` data.\n\n• `threshold` - A limit to cut off the data returned. A value of `0.5` will discard any marketshare data below 0.5"
+  '/testadvisor/operatingsystems/{os}/{code}':
+    parameters:
+      - type: string
+        name: os
+        in: path
+        required: true
+        schema:
+          type: string
+        description: '`iOS` or `Android`'
+      - type: string
+        name: code
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Code of the target country
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    osVersion:
+                      type: string
+                    date:
+                      type: string
+                    marketPen:
+                      type: number
+      description: Retrieves operating system market data for the specified country and os.
+  /testadvisor/operatingsystems/:
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    osVersion:
+                      type: string
+                    date:
+                      type: string
+                    marketPen:
+                      type: number
+      description: Retrieves mobile operating system market data. Allows for various configurations.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                country_codes:
+                  type: array
+                  items:
+                    type: string
+                regions:
+                  type: array
+                  items:
+                    type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                os:
+                  type: string
+                historic:
+                  type: boolean
+                predictive:
+                  type: boolean
+              required:
+                - country_codes
+                - regions
+                - start_date
+                - end_date
+                - os
+                - historic
+                - predictive
+        description: "Required Options:\n\n• `country_codes` - An Array of country codes.\\*\n\n• `regions` - An array of region codes.\\*\n\n• `start_date` - `YYYY-mm-DD`\n\n• `end_date` - `YYYY-mm-DD`\n\n• `os` - `iOS` or `Android`\n\n• `historic` - `true` or `false`. Whether to display historic results. If false, the `start_date` will be set to the current date.\n\n• `predictive` - `true` or `false` Whether to display predictive results. If false, the `end_date` will be set to the current date.\n\n\\* At least one of `country_codes` and `regions` must be supplied. They can be used independently or together."
+  '/testadvisor/deviceranking/{brand}/{model}':
+    parameters:
+      - type: string
+        name: brand
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Device Brand
+      - type: string
+        name: model
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Device Model
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  last-item:
+                    type: number
+                  devices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        brand:
+                          type: string
+                        model:
+                          type: string
+                        marketPen:
+                          type: number
+      description: Retrieves the device ranking in the global market share and surrounding devices. In the return body `last-item` is the id of the device with the smallest market share.
+components:
+  schemas: {}
+  securitySchemes:
+    BASIC_AUTH:
+      type: http
+      scheme: Basic
+      description: '"Basic" followed by a username and password separated by a colon, encoded in Base64. '

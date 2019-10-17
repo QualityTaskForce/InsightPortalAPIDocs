@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: InsightPortal - Top
+  version: '1.0'
+servers:
+  - url: 'https://api.insightportal.io'
+paths:
+  /top/desktopbrowsers/global/:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    marketPen:
+                      type: number
+      description: Retrieves the market shares of desktop browsers globally
+  /top/mobileos:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    marketPen:
+                      type: number
+      description: Retrieves market shares for Android and iOS globally
+  '/top/devices/{limit}':
+    parameters:
+      - type: string
+        name: limit
+        in: path
+        required: true
+        schema:
+          type: number
+        description: Between 0 and 100
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    brand:
+                      type: string
+                    model:
+                      type: string
+                    marketPen:
+                      type: number
+      description: Retrieves the devices with the highest marketshares globally.
+components:
+  schemas: {}

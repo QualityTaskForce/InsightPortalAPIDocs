@@ -1,0 +1,325 @@
+openapi: 3.0.0
+info:
+  title: InsightPortal - ReleaseAdvisor
+  version: '1.0'
+servers:
+  - url: 'https://api.insightportal.io'
+paths:
+  '/releaseadvisor/{uuid}':
+    parameters:
+      - type: string
+        name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  end_date:
+                    type: string
+                  article_id:
+                    type: string
+                  subtitle:
+                    type: string
+                  published:
+                    type: boolean
+                  category:
+                    type: string
+                  title:
+                    type: string
+                  uuid:
+                    type: string
+                  start_date:
+                    type: string
+      description: Retrieves a specific Release Advisor event
+  /releaseadvisor/:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    end_date:
+                      type: string
+                    article_id:
+                      type: string
+                    subtitle:
+                      type: string
+                    published:
+                      type: boolean
+                    category:
+                      type: string
+                    title:
+                      type: string
+                    uuid:
+                      type: string
+                    start_date:
+                      type: string
+        '':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      description: Retrieves all Release Advisor events
+  '/releaseadvisor/nextarticles/{n}':
+    parameters:
+      - type: string
+        name: 'n'
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    sefUrl:
+                      type: object
+                      properties:
+                        sefUrl:
+                          type: string
+                        uuid:
+                          type: string
+                    releaseAdvisor:
+                      type: object
+                      properties:
+                        end_date:
+                          type: string
+                        article_id:
+                          type: string
+                        subtitle:
+                          type: string
+                        published:
+                          type: boolean
+                        category:
+                          type: string
+                        title:
+                          type: string
+                        uuid:
+                          type: string
+                        start_date:
+                          type: string
+      description: Retrieve the next `n` Release Advisor events with linked articles included.
+  /releaseadvisor/all:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    releaseAdvisor:
+                      type: object
+                      properties:
+                        uuid:
+                          type: string
+                        category:
+                          type: string
+                        title:
+                          type: string
+                        subtitle:
+                          type: string
+                        published:
+                          type: boolean
+                        start_date:
+                          type: string
+                        end_date:
+                          type: string
+                        article_id:
+                          type: string
+                    articleDetails:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        summaryText:
+                          type: string
+                        impactRating:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                            name:
+                              type: integer
+                        publishDate:
+                          type: string
+                        sefURL:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                            sefUrl:
+                              type: string
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: start_date
+          description: Date in format `YYYY-mm-DD`
+        - schema:
+            type: string
+          in: query
+          name: end_date
+          description: Date in format `YYYY-mm-DD`
+      description: 'Retrieve all Release Advisor events. If `start_date` and/or `end_date` is passed as a query param, all events between those dates will be returned.'
+    parameters: []
+  '/releaseadvisor/all/{uuid}':
+    parameters:
+      - type: string
+        name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: uuid of the event
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    releaseAdvisor:
+                      type: object
+                      properties:
+                        uuid:
+                          type: string
+                        category:
+                          type: string
+                        title:
+                          type: string
+                        subtitle:
+                          type: string
+                        published:
+                          type: boolean
+                        start_date:
+                          type: string
+                        end_date:
+                          type: string
+                        article_id:
+                          type: string
+                    articleDetails:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        summaryText:
+                          type: string
+                        impactRating:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                            name:
+                              type: integer
+                        publishDate:
+                          type: string
+                        sefURL:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                            sefUrl:
+                              type: string
+      description: Retrieves an individual event
+  '/releaseadvisor/all/next/{n}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    releaseAdvisor:
+                      type: object
+                      properties:
+                        uuid:
+                          type: string
+                        category:
+                          type: string
+                        title:
+                          type: string
+                        subtitle:
+                          type: string
+                        published:
+                          type: string
+                        start_date:
+                          type: string
+                        end_date:
+                          type: string
+                        article_id:
+                          type: string
+                    articleDetails:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        summaryText:
+                          type: string
+                        impactRating:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                            name:
+                              type: integer
+                        publishDate:
+                          type: string
+                        sefURL:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                            sefUrl:
+                              type: string
+      description: Retrieves the next `n` Release Advisor events with article details.
+    parameters:
+      - schema:
+          type: string
+        name: 'n'
+        in: path
+        required: true
+components:
+  schemas: {}
