@@ -7,7 +7,7 @@ servers:
 paths:
   '/article/get-article/{sef-url}':
     get:
-      summary: Your GET endpoint
+      summary: Get Article
       tags: []
       responses:
         '200':

@@ -7,7 +7,7 @@ servers:
 paths:
   /top/desktopbrowsers/global/:
     get:
-      summary: Your GET endpoint
+      summary: Get global desktop browsers
       tags: []
       responses:
         '200':
@@ -26,7 +26,7 @@ paths:
       description: Retrieves the market shares of desktop browsers globally
   /top/mobileos:
     get:
-      summary: Your GET endpoint
+      summary: Get top mobileOS
       tags: []
       responses:
         '200':
@@ -53,7 +53,7 @@ paths:
           type: number
         description: Between 0 and 100
     get:
-      summary: Your GET endpoint
+      summary: Get global top devices
       tags: []
       responses:
         '200':

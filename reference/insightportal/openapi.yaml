@@ -270,7 +270,7 @@ paths:
           type: string
         description: Code of the target country
     get:
-      summary: Your GET endpoint
+      summary: Get Desktop Browser Marketshares
       tags: []
       responses:
         '200':
@@ -295,7 +295,7 @@ paths:
       description: Retrieves desktop browser and operating system market data for a single country for the current month. Ordered by market penetration in descending order.
   /testadvisor/desktopbrowsers/:
     post:
-      summary: ''
+      summary: Get Desktop Browser Marketshares
       responses:
         '200':
           description: OK
@@ -383,7 +383,7 @@ paths:
         schema:
           type: string
     get:
-      summary: Your GET endpoint
+      summary: Get Mobile Device Marketshares
       tags: []
       responses:
         '200':
@@ -410,7 +410,7 @@ paths:
       description: Retrieves mobile device market data for the current month in the selected country. Ordered by market share
   /testadvisor/mobiledevices/:
     post:
-      summary: ''
+      summary: Get Mobile Device Marketshares
       responses:
         '200':
           description: OK
@@ -497,7 +497,7 @@ paths:
           type: string
         description: Code of the target country
     get:
-      summary: Your GET endpoint
+      summary: Get Mobile Operating System Marketshares
       tags: []
       responses:
         '200':
@@ -518,7 +518,7 @@ paths:
       description: Retrieves operating system market data for the specified country and os.
   /testadvisor/operatingsystems/:
     post:
-      summary: ''
+      summary: Get Mobile Operating System Marketshares
       responses:
         '200':
           description: OK
@@ -586,7 +586,7 @@ paths:
           type: string
         description: Device Model
     get:
-      summary: Your GET endpoint
+      summary: Get global device ranking
       tags: []
       responses:
         '200':

@@ -14,7 +14,7 @@ paths:
         schema:
           type: string
     get:
-      summary: Your GET endpoint
+      summary: Get ReleaseAdvisor Event
       tags: []
       responses:
         '200':
@@ -43,7 +43,7 @@ paths:
       description: Retrieves a specific Release Advisor event
   /releaseadvisor/:
     get:
-      summary: Your GET endpoint
+      summary: Get all ReleaseAdvisor Events
       tags: []
       responses:
         '200':
@@ -85,7 +85,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get Next ReleaseAdvisor Events with Articles
       tags: []
       responses:
         '200':
@@ -126,7 +126,7 @@ paths:
       description: Retrieve the next `n` Release Advisor events with linked articles included.
   /releaseadvisor/all:
     get:
-      summary: Your GET endpoint
+      summary: Get all ReleaseAdvisor events between dates
       tags: []
       responses:
         '200':
@@ -203,7 +203,7 @@ paths:
           type: string
         description: uuid of the event
     get:
-      summary: Your GET endpoint
+      summary: Get ReleaseAdvisor Event
       tags: []
       responses:
         '200':
@@ -260,7 +260,7 @@ paths:
       description: Retrieves an individual event
   '/releaseadvisor/all/next/{n}':
     get:
-      summary: Your GET endpoint
+      summary: Get Next ReleaseAdvisor Events with article details
       tags: []
       responses:
         '200':
