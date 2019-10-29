@@ -8,7 +8,7 @@ info:
 servers:
   - url: 'https://api.insightportal.io'
 paths:
-  /top/desktopbrowsers/global/:
+  /top/desktopbrowsers/global:
     get:
       summary: Get global desktop browsers
       tags: []
@@ -29,6 +29,8 @@ paths:
       description: Retrieves the market shares of desktop browsers globally
       security:
         - BasicAuth: []
+      operationId: '1'
+    parameters: []
   /top/mobileos:
     get:
       summary: Get top mobileOS
@@ -50,14 +52,14 @@ paths:
       description: Retrieves market shares for Android and iOS globally
       security:
         - BasicAuth: []
-  /top/devices/{limit}:
+      operationId: '2'
+  '/top/devices/{limit}':
     parameters:
-      - type: string
+      - schema:
+          type: number
         name: limit
         in: path
         required: true
-        schema:
-          type: number
         description: Between 0 and 100
     get:
       summary: Get global top devices
@@ -81,6 +83,7 @@ paths:
       description: Retrieves the devices with the highest marketshares globally.
       security:
         - BasicAuth: []
+      operationId: '3'
 components:
   securitySchemes:
     BasicAuth:

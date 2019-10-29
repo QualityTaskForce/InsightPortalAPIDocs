@@ -10,12 +10,12 @@ servers:
 paths:
   '/releaseadvisor/{uuid}':
     parameters:
-      - type: string
+      - schema:
+          type: string
         name: uuid
         in: path
         required: true
-        schema:
-          type: string
+        description: uuid of releaseadvisor event
     get:
       summary: Get ReleaseAdvisor Event
       tags: []
@@ -46,7 +46,8 @@ paths:
       description: Retrieves a specific Release Advisor event
       security:
         - BasicAuth: []
-  /releaseadvisor/:
+      operationId: '1'
+  /releaseadvisor:
     get:
       summary: Get all ReleaseAdvisor Events
       tags: []
@@ -76,18 +77,14 @@ paths:
                       type: string
                     start_date:
                       type: string
-        '':
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
       description: Retrieves all Release Advisor events
       security:
         - BasicAuth: []
+      operationId: '2'
   '/releaseadvisor/nextarticles/{n}':
     parameters:
-      - type: string
+      - schema:
+          type: string
         name: 'n'
         in: path
         required: true
@@ -133,6 +130,7 @@ paths:
       description: Retrieve the next `n` Release Advisor events with linked articles included.
       security:
         - BasicAuth: []
+      operationId: '3'
   /releaseadvisor/all:
     get:
       summary: Get all ReleaseAdvisor events between dates
@@ -203,15 +201,15 @@ paths:
       description: 'Retrieve all Release Advisor events. If `start_date` and/or `end_date` is passed as a query param, all events between those dates will be returned.'
       security:
         - BasicAuth: []
+      operationId: '5'
     parameters: []
   '/releaseadvisor/all/{uuid}':
     parameters:
-      - type: string
+      - schema:
+          type: string
         name: uuid
         in: path
         required: true
-        schema:
-          type: string
         description: uuid of the event
     get:
       summary: Get ReleaseAdvisor Event With extra information
@@ -271,6 +269,7 @@ paths:
       description: Retrieves an individual event
       security:
         - BasicAuth: []
+      operationId: '4'
   '/releaseadvisor/all/next/{n}':
     get:
       summary: Get Next ReleaseAdvisor Events with article details
@@ -330,6 +329,7 @@ paths:
       description: Retrieves the next `n` Release Advisor events with article details.
       security:
         - BasicAuth: []
+      operationId: '6'
     parameters:
       - schema:
           type: string

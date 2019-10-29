@@ -62,6 +62,7 @@ paths:
       description: Retrieves a specific article
       security:
         - BasicAuth: []
+      operationId: '1'
     parameters:
       - schema:
           type: string
