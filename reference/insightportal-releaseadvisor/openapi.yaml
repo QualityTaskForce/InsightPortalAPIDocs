@@ -213,7 +213,7 @@ paths:
           type: string
         description: uuid of the event
     get:
-      summary: Get ReleaseAdvisor Event
+      summary: Get ReleaseAdvisor Event With extra information
       tags: []
       responses:
         '200':
@@ -338,7 +338,7 @@ paths:
 components:
   schemas: {}
   securitySchemes:
-    BASIC_AUTH:
+    BasicAuth:
       type: http
       scheme: Basic
       description: '"Basic" followed by a username and password separated by a colon, encoded in Base64.'
