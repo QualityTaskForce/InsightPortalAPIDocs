@@ -163,7 +163,7 @@ paths:
       operationId: '4'
   /testadvisor/browsers:
     post:
-      summary: Get browser market shares
+      summary: Browser market shares - Configurable
       responses:
         '200':
           description: OK
@@ -307,7 +307,7 @@ paths:
       operationId: '6'
   /testadvisor/desktopbrowsers:
     post:
-      summary: Get Desktop Browser Marketshares
+      summary: Desktop Browser Marketshares - Configurable
       responses:
         '200':
           description: OK
@@ -429,7 +429,7 @@ paths:
       operationId: '8'
   /testadvisor/mobiledevices:
     post:
-      summary: Get Mobile Device Marketshares
+      summary: Mobile Device Marketshares - Configurable
       responses:
         '200':
           description: OK
@@ -543,7 +543,7 @@ paths:
       operationId: '10'
   /testadvisor/operatingsystems:
     post:
-      summary: Get Mobile Operating System Marketshares
+      summary: Mobile Operating System Marketshares - Configurable
       responses:
         '200':
           description: OK
