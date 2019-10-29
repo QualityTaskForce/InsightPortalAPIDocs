@@ -43,7 +43,7 @@ paths:
                       region_code: AS
       description: Retreive a list of supported countries. Alphabetically ordered.
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   /testadvisor/regions:
     get:
       summary: Get regions
@@ -67,7 +67,7 @@ paths:
                     - WWW
       description: 'Retrieves a list of supported regions. "WWW" is a special region containing all available regions and countries.'
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   '/testadvisor/countriesbyregion/{region}':
     parameters:
       - type: string
@@ -110,7 +110,7 @@ paths:
                       region_code: EU
       description: Retrieves a list of countries for a specific region
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   '/testadvisor/browsers/{code}':
     parameters:
       - type: string
@@ -158,7 +158,7 @@ paths:
                       marketPen: 0.11
       description: Retrieves browser market data for a single country for the current month. Ordered by market penetration in descending order.
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   /testadvisor/browsers:
     post:
       summary: Get browser market shares
@@ -206,8 +206,6 @@ paths:
                 type: object
                 properties: {}
       description: Retrieves browser market data. Allows for various configurations.
-      security:
-        - BASIC_AUTH: []
       requestBody:
         content:
           application/json:
@@ -266,6 +264,8 @@ paths:
                   hide_out_of_coverage: true
                   threshold: 0.1
         description: "Required Options:\n\n• `country_codes` - An Array of country codes.\\*\n\n• `regions` - An array of region codes.\\*\n\n• `date` - `YYYY-mm-DD`\n\n\\* At least one of `country_codes` and `regions` must be supplied. They can be used independently or together.\n\nOptional:\n\n• `coverage` - Splits the data returned into 2 arrays. `inCoverage` and `outOfCoverage`. A value of `40` would return the largest marketshares, summing to 40% in the `inCoverage` list and the rest would be contained in the `outOfCoverage` list.\n\n• `hide_out_of_coverage` - Used together with the `coverage` option, will hide the `outOfCoverage` list, returning only the `inCoverage` data.\n\n• `threshold` - A limit to cut off the data returned. A value of `0.5` will discard any marketshare data below 0.5"
+      security:
+        - BasicAuth: []
   '/testadvisor/desktopbrowsers/{code}':
     parameters:
       - type: string
@@ -299,6 +299,8 @@ paths:
                     marketPen:
                       type: number
       description: Retrieves desktop browser and operating system market data for a single country for the current month. Ordered by market penetration in descending order.
+      security:
+        - BasicAuth: []
   /testadvisor/desktopbrowsers/:
     post:
       summary: Get Desktop Browser Marketshares
@@ -380,7 +382,7 @@ paths:
                   type: number
         description: "Required Options:\n\n• `country_codes` - An Array of country codes.\\*\n\n• `regions` - An array of region codes.\\*\n\n• `date` - `YYYY-mm-DD`\n\n\\* At least one of `country_codes` and `regions` must be supplied. They can be used independently or together.\n\nOptional:\n\n• `coverage` - Splits the data returned into 2 arrays. `inCoverage` and `outOfCoverage`. A value of `40` would return the largest marketshares, summing to 40% in the `inCoverage` list and the rest would be contained in the `outOfCoverage` list.\n\n• `hide_out_of_coverage` - Used together with the `coverage` option, will hide the `outOfCoverage` list, returning only the `inCoverage` data.\n\n• `threshold` - A limit to cut off the data returned. A value of `0.5` will discard any marketshare data below 0.5"
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   '/testadvisor/mobiledevices/{code}':
     parameters:
       - type: string
@@ -417,7 +419,7 @@ paths:
                       type: number
       description: Retrieves mobile device market data for the current month in the selected country. Ordered by market share
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   /testadvisor/mobiledevices/:
     post:
       summary: Get Mobile Device Marketshares
@@ -491,7 +493,7 @@ paths:
                   type: number
         description: "Required Options:\n\n• `country_codes` - An Array of country codes.\\*\n\n• `regions` - An array of region codes.\\*\n\n• `date` - `YYYY-mm-DD`\n\n\\* At least one of `country_codes` and `regions` must be supplied. They can be used independently or together.\n\nOptional:\n\n• `coverage` - Splits the data returned into 2 arrays. `inCoverage` and `outOfCoverage`. A value of `40` would return the largest marketshares, summing to 40% in the `inCoverage` list and the rest would be contained in the `outOfCoverage` list.\n\n• `hide_out_of_coverage` - Used together with the `coverage` option, will hide the `outOfCoverage` list, returning only the `inCoverage` data.\n\n• `threshold` - A limit to cut off the data returned. A value of `0.5` will discard any marketshare data below 0.5"
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   '/testadvisor/operatingsystems/{os}/{code}':
     parameters:
       - type: string
@@ -529,7 +531,7 @@ paths:
                       type: number
       description: Retrieves operating system market data for the specified country and os.
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   /testadvisor/operatingsystems/:
     post:
       summary: Get Mobile Operating System Marketshares
@@ -584,7 +586,7 @@ paths:
                 - predictive
         description: "Required Options:\n\n• `country_codes` - An Array of country codes.\\*\n\n• `regions` - An array of region codes.\\*\n\n• `start_date` - `YYYY-mm-DD`\n\n• `end_date` - `YYYY-mm-DD`\n\n• `os` - `iOS` or `Android`\n\n• `historic` - `true` or `false`. Whether to display historic results. If false, the `start_date` will be set to the current date.\n\n• `predictive` - `true` or `false` Whether to display predictive results. If false, the `end_date` will be set to the current date.\n\n\\* At least one of `country_codes` and `regions` must be supplied. They can be used independently or together."
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
   '/testadvisor/deviceranking/{brand}/{model}':
     parameters:
       - type: string
@@ -629,7 +631,7 @@ paths:
                           type: number
       description: Retrieves the device ranking in the global market share and surrounding devices. In the return body `last-item` is the id of the device with the smallest market share.
       security:
-        - BASIC_AUTH: []
+        - BasicAuth: []
 components:
   schemas: {}
   securitySchemes:
