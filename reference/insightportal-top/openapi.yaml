@@ -50,7 +50,7 @@ paths:
       description: Retrieves market shares for Android and iOS globally
       security:
         - BasicAuth: []
-  '/top/devices/{limit}':
+  /top/devices/{limit}:
     parameters:
       - type: string
         name: limit
@@ -82,7 +82,6 @@ paths:
       security:
         - BasicAuth: []
 components:
-  schemas: {}
   securitySchemes:
     BasicAuth:
       type: http

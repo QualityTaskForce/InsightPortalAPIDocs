@@ -337,7 +337,6 @@ paths:
         in: path
         required: true
 components:
-  schemas: {}
   securitySchemes:
     BasicAuth:
       type: http

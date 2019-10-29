@@ -70,7 +70,6 @@ paths:
         required: true
         description: sef-url for the article
 components:
-  schemas: {}
   securitySchemes:
     BasicAuth:
       type: http
