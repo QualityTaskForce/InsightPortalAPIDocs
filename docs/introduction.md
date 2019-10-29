@@ -9,4 +9,4 @@ All endpoints on the InsightPortal API require authentication.
 `example@example.com:mypassword`
 
 
-`AuthorizationL: Basic ZXhhbXBsZUBleGFtcGxlLmNvbTpteXBhc3N3b3Jk=`
+`Authorization: Basic ZXhhbXBsZUBleGFtcGxlLmNvbTpteXBhc3N3b3Jk=`

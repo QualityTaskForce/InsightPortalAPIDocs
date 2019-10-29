@@ -88,6 +88,7 @@ paths:
         name: 'n'
         in: path
         required: true
+        description: The number of events to retrieve
     get:
       summary: Get Next ReleaseAdvisor Events with Articles
       tags: []
@@ -336,6 +337,7 @@ paths:
         name: 'n'
         in: path
         required: true
+        description: The number of events to retrieve
 components:
   securitySchemes:
     BasicAuth:
