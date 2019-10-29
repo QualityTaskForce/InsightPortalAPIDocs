@@ -2,6 +2,8 @@ openapi: 3.0.0
 info:
   title: InsightPortal - Top
   version: '1.0'
+  contact:
+    url: www.qualitytaskforce.com
 servers:
   - url: 'https://api.insightportal.io'
 paths:
@@ -74,3 +76,8 @@ paths:
       description: Retrieves the devices with the highest marketshares globally.
 components:
   schemas: {}
+  securitySchemes:
+    BASIC_AUTH:
+      type: http
+      scheme: Basic
+      description: '"Basic" followed by a username and password separated by a colon, encoded in Base64.'

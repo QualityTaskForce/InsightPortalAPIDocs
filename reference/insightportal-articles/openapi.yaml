@@ -2,6 +2,8 @@ openapi: 3.0.0
 info:
   title: InsightPortal - Articles
   version: '1.0'
+  contact:
+    url: www.qualitytaskforce.com
 servers:
   - url: 'https://api.insightportal.io'
 paths:
@@ -66,3 +68,8 @@ paths:
         description: sef-url for the article
 components:
   schemas: {}
+  securitySchemes:
+    BASIC_AUTH:
+      type: http
+      scheme: Basic
+      description: '"Basic" followed by a username and password separated by a colon, encoded in Base64.'
