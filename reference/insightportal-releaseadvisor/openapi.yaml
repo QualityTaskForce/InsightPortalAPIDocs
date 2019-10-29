@@ -4,6 +4,7 @@ info:
   version: '1.0'
   contact:
     url: www.qualitytaskforce.com
+  description: Endpoints related to ReleaseAdvisor
 servers:
   - url: 'https://api.insightportal.io'
 paths:

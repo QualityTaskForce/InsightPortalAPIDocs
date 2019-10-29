@@ -4,7 +4,7 @@ info:
   version: '1.0'
   contact:
     url: www.qualitytaskforce.com
-  description: API for InsightPortal
+  description: Endpoints related to TestAdvisor
 servers:
   - url: 'https://api.insightportal.io'
     description: InsightPortal API
