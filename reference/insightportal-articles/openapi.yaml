@@ -59,6 +59,8 @@ paths:
                   subcategory:
                     type: string
       description: Retrieves a specific article
+      security:
+        - BASIC_AUTH: []
     parameters:
       - schema:
           type: string

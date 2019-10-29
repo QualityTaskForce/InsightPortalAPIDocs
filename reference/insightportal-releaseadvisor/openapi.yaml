@@ -43,6 +43,8 @@ paths:
                   start_date:
                     type: string
       description: Retrieves a specific Release Advisor event
+      security:
+        - BASIC_AUTH: []
   /releaseadvisor/:
     get:
       summary: Get all ReleaseAdvisor Events
@@ -80,6 +82,8 @@ paths:
                 type: object
                 properties: {}
       description: Retrieves all Release Advisor events
+      security:
+        - BASIC_AUTH: []
   '/releaseadvisor/nextarticles/{n}':
     parameters:
       - type: string
@@ -126,6 +130,8 @@ paths:
                         start_date:
                           type: string
       description: Retrieve the next `n` Release Advisor events with linked articles included.
+      security:
+        - BASIC_AUTH: []
   /releaseadvisor/all:
     get:
       summary: Get all ReleaseAdvisor events between dates
@@ -194,6 +200,8 @@ paths:
           name: end_date
           description: Date in format `YYYY-mm-DD`
       description: 'Retrieve all Release Advisor events. If `start_date` and/or `end_date` is passed as a query param, all events between those dates will be returned.'
+      security:
+        - BASIC_AUTH: []
     parameters: []
   '/releaseadvisor/all/{uuid}':
     parameters:
@@ -260,6 +268,8 @@ paths:
                             sefUrl:
                               type: string
       description: Retrieves an individual event
+      security:
+        - BASIC_AUTH: []
   '/releaseadvisor/all/next/{n}':
     get:
       summary: Get Next ReleaseAdvisor Events with article details
@@ -317,6 +327,8 @@ paths:
                             sefUrl:
                               type: string
       description: Retrieves the next `n` Release Advisor events with article details.
+      security:
+        - BASIC_AUTH: []
     parameters:
       - schema:
           type: string

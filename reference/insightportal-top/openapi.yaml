@@ -26,6 +26,8 @@ paths:
                     marketPen:
                       type: number
       description: Retrieves the market shares of desktop browsers globally
+      security:
+        - BASIC_AUTH: []
   /top/mobileos:
     get:
       summary: Get top mobileOS
@@ -45,6 +47,8 @@ paths:
                     marketPen:
                       type: number
       description: Retrieves market shares for Android and iOS globally
+      security:
+        - BASIC_AUTH: []
   '/top/devices/{limit}':
     parameters:
       - type: string
@@ -74,6 +78,8 @@ paths:
                     marketPen:
                       type: number
       description: Retrieves the devices with the highest marketshares globally.
+      security:
+        - BASIC_AUTH: []
 components:
   schemas: {}
   securitySchemes:
