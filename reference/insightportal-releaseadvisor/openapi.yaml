@@ -43,6 +43,17 @@ paths:
                     type: string
                   start_date:
                     type: string
+              examples:
+                example-1:
+                  value:
+                    end_date: '2017-01-31'
+                    article_id: 796e8502-2cc1-46cd-89b8-50be0d74510c
+                    subtitle: Release
+                    published: true
+                    category: browser-chrome
+                    title: Chrome 56
+                    uuid: 01b26aaf-1057-455d-8fe7-11a527348f18
+                    start_date: '2017-01-31'
       description: Retrieves a specific Release Advisor event
       security:
         - BasicAuth: []
@@ -77,6 +88,33 @@ paths:
                       type: string
                     start_date:
                       type: string
+              examples:
+                example-1:
+                  value:
+                    - end_date: '2017-01-31'
+                      article_id: 796e8502-2cc1-46cd-89b8-50be0d74510c
+                      subtitle: Release
+                      published: true
+                      category: browser-chrome
+                      title: Chrome 56
+                      uuid: 01b26aaf-1057-455d-8fe7-11a527348f18
+                      start_date: '2017-01-31'
+                    - end_date: '2017-01-31'
+                      article_id: 082251f5-8166-47e3-b823-911f5169e3b2
+                      subtitle: Release
+                      published: true
+                      category: desktop-os-windows
+                      title: Windows 10 Redstone 4 Update
+                      uuid: 0572d946-2e0c-4ae5-8e7c-5a6a39f01270
+                      start_date: '2018-04-01'
+                    - end_date: '2017-01-31'
+                      article_id: ab5d4835-66f1-4152-a072-2a199daa9608
+                      subtitle: Beta
+                      published: true
+                      category: browser-firefox-beta
+                      title: Firefox 59
+                      uuid: 0cfdf8f4-b5d0-4533-bd6f-a23809aa49a6
+                      start_date: '2018-01-22'
       description: Retrieves all Release Advisor events
       security:
         - BasicAuth: []
@@ -128,6 +166,59 @@ paths:
                           type: string
                         start_date:
                           type: string
+              examples:
+                example-1:
+                  value:
+                    - sefUrl: null
+                      releaseAdvisor:
+                        end_date: '2019-12-10'
+                        article_id: null
+                        subtitle: Release
+                        published: true
+                        category: browser-chrome
+                        title: Chrome 79
+                        uuid: 66aea708-dd68-4e9b-afa3-03fc3113fc8e
+                        start_date: '2019-12-10'
+                    - sefUrl: null
+                      releaseAdvisor:
+                        end_date: '2019-12-10'
+                        article_id: null
+                        subtitle: Release
+                        published: true
+                        category: browser-firefox
+                        title: Firefox 71
+                        uuid: 6e646cfe-4688-4d00-9ae5-03da8d322b03
+                        start_date: '2019-12-10'
+                    - sefUrl: null
+                      releaseAdvisor:
+                        end_date: '2019-12-10'
+                        article_id: null
+                        subtitle: Release
+                        published: true
+                        category: desktop-os-chromeos
+                        title: Chrome OS 79
+                        uuid: f4da0977-0341-415a-b5c4-c4062ebd3209
+                        start_date: '2019-12-10'
+                    - sefUrl: null
+                      releaseAdvisor:
+                        end_date: '2019-12-19'
+                        article_id: null
+                        subtitle: Beta
+                        published: true
+                        category: browser-chrome-beta
+                        title: Chrome 80
+                        uuid: 8a475c80-9d6a-43b4-9229-1253044ebdc6
+                        start_date: '2019-12-19'
+                    - sefUrl: null
+                      releaseAdvisor:
+                        end_date: '2020-02-04'
+                        article_id: null
+                        subtitle: Release
+                        published: true
+                        category: browser-chrome
+                        title: Chrome 80
+                        uuid: 6d72e4fe-62db-49b6-9fa7-944ba6618240
+                        start_date: '2020-02-04'
       description: Retrieve the next `n` Release Advisor events with linked articles included.
       security:
         - BasicAuth: []
@@ -188,6 +279,38 @@ paths:
                               type: string
                             sefUrl:
                               type: string
+              examples:
+                example-1:
+                  value:
+                    - releaseAdvisor:
+                        end_date: '2018-12-10'
+                        article_id: null
+                        subtitle: Beta
+                        published: true
+                        category: browser-chrome-beta
+                        title: Chrome
+                        uuid: 1625d7e7-0649-488d-858d-55d832f1d482
+                        start_date: '2018-12-10'
+                      articleDetails: null
+                    - releaseAdvisor:
+                        end_date: '2018-12-10'
+                        article_id: 0a5b1266-b93c-46e7-bf8b-385d5e3852f4
+                        subtitle: Release
+                        published: true
+                        category: desktop-os-chromeos
+                        title: Chrome OS 71
+                        uuid: 2d47d72e-ac16-460a-a8db-d6e32e2f6240
+                        start_date: '2018-12-10'
+                      articleDetails:
+                        title: Chrome 71 Release Date and Features
+                        summaryText: Chrome is going to be more protective of its users.
+                        impactRating:
+                          uuid: d9e3ece0-12ba-435a-9697-9701bad9e13c
+                          name: 3
+                        publishDate: '2018-11-19 02:59:10'
+                        sefURL:
+                          uuid: 1ef18ca5-2a0b-4365-98f2-bae3c763-e567
+                          sefUrl: chrome-71-release-date-and-features
       parameters:
         - schema:
             type: string
@@ -267,6 +390,28 @@ paths:
                               type: string
                             sefUrl:
                               type: string
+              examples:
+                example-1:
+                  value:
+                    releaseAdvisor:
+                      end_date: '2018-12-10'
+                      article_id: 0a5b1266-b93c-46e7-bf8b-385d5e3852f4
+                      subtitle: Release
+                      published: true
+                      category: desktop-os-chromeos
+                      title: Chrome OS 71
+                      uuid: 2d47d72e-ac16-460a-a8db-d6e32e2f6240
+                      start_date: '2018-12-10'
+                    articleDetails:
+                      title: Chrome 71 Release Date and Features
+                      summaryText: Chrome is going to be more protective of its users.
+                      impactRating:
+                        uuid: d9e3ece0-12ba-435a-9697-9701bad9e13c
+                        name: 3
+                      publishDate: '2018-11-19 02:59:10'
+                      sefURL:
+                        uuid: 1ef18ca5-2a0b-4365-98f2-bae3c763-e567
+                        sefUrl: chrome-71-release-date-and-features
       description: Retrieves an individual event
       security:
         - BasicAuth: []
@@ -327,6 +472,38 @@ paths:
                               type: string
                             sefUrl:
                               type: string
+              examples:
+                example-1:
+                  value:
+                    - releaseAdvisor:
+                        end_date: '2018-12-10'
+                        article_id: null
+                        subtitle: Beta
+                        published: true
+                        category: browser-chrome-beta
+                        title: Chrome
+                        uuid: 1625d7e7-0649-488d-858d-55d832f1d482
+                        start_date: '2018-12-10'
+                      articleDetails: null
+                    - releaseAdvisor:
+                        end_date: '2018-12-10'
+                        article_id: 0a5b1266-b93c-46e7-bf8b-385d5e3852f4
+                        subtitle: Release
+                        published: true
+                        category: desktop-os-chromeos
+                        title: Chrome OS 71
+                        uuid: 2d47d72e-ac16-460a-a8db-d6e32e2f6240
+                        start_date: '2018-12-10'
+                      articleDetails:
+                        title: Chrome 71 Release Date and Features
+                        summaryText: Chrome is going to be more protective of its users.
+                        impactRating:
+                          uuid: d9e3ece0-12ba-435a-9697-9701bad9e13c
+                          name: 3
+                        publishDate: '2018-11-19 02:59:10'
+                        sefURL:
+                          uuid: 1ef18ca5-2a0b-4365-98f2-bae3c763-e567
+                          sefUrl: chrome-71-release-date-and-features
       description: Retrieves the next `n` Release Advisor events with article details.
       security:
         - BasicAuth: []

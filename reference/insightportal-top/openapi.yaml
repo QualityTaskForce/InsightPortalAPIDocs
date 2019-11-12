@@ -26,6 +26,19 @@ paths:
                       type: string
                     marketPen:
                       type: number
+              examples:
+                example-1:
+                  value:
+                    - name: Chrome
+                      marketPen: 63.962852
+                    - name: Safari
+                      marketPen: 12.952977
+                    - name: Firefox
+                      marketPen: 7.105454
+                    - name: IE
+                      marketPen: 4.402005
+                    - name: Others
+                      marketPen: 11.574989
       description: Retrieves the market shares of desktop browsers globally
       security:
         - BasicAuth: []
@@ -49,6 +62,13 @@ paths:
                       type: string
                     marketPen:
                       type: number
+              examples:
+                example-1:
+                  value:
+                    - name: Android
+                      marketPen: 59.92334
+                    - name: iOS
+                      marketPen: 40.07126
       description: Retrieves market shares for Android and iOS globally
       security:
         - BasicAuth: []
@@ -80,6 +100,24 @@ paths:
                       type: string
                     marketPen:
                       type: number
+              examples:
+                example-1:
+                  value:
+                    - brand: Apple
+                      model: iPhone 7
+                      marketPen: 4.859173
+                    - brand: Apple
+                      model: iPhone 8
+                      marketPen: 4.462529
+                    - brand: Apple
+                      model: iPhone X
+                      marketPen: 3.479606
+                    - brand: Apple
+                      model: iPhone 6s
+                      marketPen: 3.373906
+                    - brand: Huawei
+                      model: P20
+                      marketPen: 3.062391
       description: Retrieves the devices with the highest marketshares globally.
       security:
         - BasicAuth: []

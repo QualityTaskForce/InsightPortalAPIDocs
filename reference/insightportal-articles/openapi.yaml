@@ -59,6 +59,24 @@ paths:
                     type: string
                   subcategory:
                     type: string
+              examples:
+                /article/get-article/samsungs-q3-2019-revenue:
+                  value:
+                    uuid: 0629fe83-4547-4f15-b1e5-06e100e9a884
+                    title: "Samsung's Q3 2019 revenue"
+                    summaryText: ' Operational incomes decreased by half'
+                    editorName: Monika
+                    editorSurname: Szefler
+                    dateOfPublished: 04 Nov 2019
+                    readTime: 2
+                    impactRating: 1
+                    articleUpdates: []
+                    testRecommendation: null
+                    fullText: "<p>Samsung, one of the leaders on the smartphone market, had a hard time recently. Firstly, its new innovative foldable device, the <a href=\"https://www.insightportal.io/news/all-news/samsung-galaxy-x-rumours-and-specification\" target=\"_self\">Galaxy Fold,</a> turned out not to work. So the date of release was rescheduled, and in September the device finally saw the light of day once again.&nbsp;&nbsp;</p><p>Another of the company’s setbacks was a<a href=\"https://www.insightportal.io/news/all-news/samsung-galaxy-s10-fingerprint-scanner-flaw-can-allow\" target=\"_self\"> security flaw of its fingerprint scanner</a> in the <a href=\"https://www.insightportal.io/news/all-news/samsung-galaxy-s10-rumours-and-features\" target=\"_self\">Galaxy S10</a> and<a href=\"https://www.insightportal.io/news/all-news/samsung-galaxy-s10-plus-release-date-and-features\" target=\"_self\"> S10 Plus</a>. It turned out that if someone got a certain type of screen protector then they could interfere with the ultrasounds the scanner uses to identify a fingerprint, this in effect could allow anyone to access the device. Fortunately, the problem was solved by an update patching this vulnerability. However, how did those issues affect the company's earnings?&nbsp;&nbsp;</p><p>Sadly, Samsung noted a 56% drop in operating profits compared to the previous year. Moreover, between July and September, the company earned 6.58 billion USD, while in the same period last year their revenue was 15.04 billion USD (sic!). This may have been caused by a small demand for memory chips and the collapsing semiconductor market.&nbsp;</p><p>The good news for the company is that the 2.5 billion USD income generated from smartphone sales meant a 32% better result than last year. The great sales numbers of the<a href=\"https://www.insightportal.io/news/all-news/samsung-galaxy-note-10-rumours-specifications-and-release\" target=\"_self\"> Galaxy Note 10 </a>contributed to this. However, predictions for Q4 2019 are not too optimistic. Around Christmas, the company will spend a lot of money on advertising, and the sales of flagships will fall in comparison with the hot period right after the release.&nbsp;Looking ahead, Samsung wants to develop its 5G technology and create more foldable devices. The company sees the potential for big profits in it. Surely, <a href=\"https://www.insightportal.io/news/all-news/the-5g-revolution\" target=\"_self\">5G</a> devices are becoming more and more popular, and soon it might become a standard, so shortly the company may find more clients interested in buying its chipsets so that they can implement 5G connectivity into their devices.&nbsp;</p>"
+                    richcardId: null
+                    richcardType: generic
+                    category: 'Rumours & Trends'
+                    subcategory: null
       description: Retrieves a specific article
       security:
         - BasicAuth: []
