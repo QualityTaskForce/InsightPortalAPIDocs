@@ -363,7 +363,7 @@ paths:
       security:
         - BasicAuth: []
       operationId: '6'
-  /testadvisor/desktopbrowsers:
+  /testadvisor/desktopbrowsers/:
     post:
       summary: Desktop Browser Marketshares - Configurable
       responses:
@@ -559,7 +559,7 @@ paths:
       security:
         - BasicAuth: []
       operationId: '8'
-  /testadvisor/mobiledevices:
+  /testadvisor/mobiledevices/:
     post:
       summary: Mobile Device Marketshares - Configurable
       responses:
@@ -746,7 +746,7 @@ paths:
       security:
         - BasicAuth: []
       operationId: '10'
-  /testadvisor/operatingsystems:
+  /testadvisor/operatingsystems/:
     post:
       summary: Mobile Operating System Marketshares - Configurable
       responses:
