@@ -8,7 +8,7 @@ info:
 servers:
   - url: 'https://api.insightportal.io'
 paths:
-  /top/desktopbrowsers/global:
+  testadvisor/top/desktopbrowsers/global:
     get:
       summary: Get global desktop browsers
       tags: []
@@ -44,7 +44,7 @@ paths:
         - BasicAuth: []
       operationId: '1'
     parameters: []
-  /top/mobileos:
+  testadvisor/top/mobileos:
     get:
       summary: Get top mobileOS
       tags: []
@@ -73,7 +73,8 @@ paths:
       security:
         - BasicAuth: []
       operationId: '2'
-  '/top/devices/{limit}':
+    parameters: []
+  'testadvisor/top/devices/{limit}':
     parameters:
       - schema:
           type: number
